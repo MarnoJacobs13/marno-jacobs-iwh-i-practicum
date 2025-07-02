@@ -18,10 +18,12 @@ app.get('/', async (req, res) => {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
     }
+    const params = {
+        properties: ['Name', 'Team', 'Wins'].join(',')
+    }
     try {
-        const resp = await axios.get(contacts, { headers });
+        const resp = await axios.get(contacts, { headers, params });
         const data = resp.data.results;
-        console.log(data)
         res.render('contacts', { title: 'Contacts | HubSpot APIs', data });      
     } catch (error) {
         console.error(error);
