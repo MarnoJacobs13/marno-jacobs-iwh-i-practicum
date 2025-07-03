@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 HubSpot F1 Drivers
+    table(border="1")
+      thead
+        tr
+          th Name
+          th Team
+          th Wins
+      tbody
+        each driver in data
+          tr
+            td= driver.properties.name
+            td= driver.properties.team
+            td= driver.properties.wins
