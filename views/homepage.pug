@@ -4,7 +4,9 @@ html
     title= title
     link(rel="stylesheet", href="/styles.css")
   body
-    h1 HubSpot F1 Drivers
+    h1 Custom Object Table
+    a(href="/update-cobj") Add/Update this table
+    
     table(border="1")
       thead
         tr
@@ -12,8 +14,12 @@ html
           th Team
           th Wins
       tbody
-        each driver in data
+        if data && data.length
+          each driver in data
+            tr
+              td= driver.properties.name
+              td= driver.properties.team
+              td= driver.properties.wins
+        else
           tr
-            td= driver.properties.name
-            td= driver.properties.team
-            td= driver.properties.wins
+            td(colspan="3") No drivers found
